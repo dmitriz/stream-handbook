@@ -414,6 +414,9 @@ This is because there is extra data left in internal buffers and we need to give
 node a "kick" to tell it that we are interested in more data past the 3 bytes
 that we've already read. A simple `.read(0)` will do this:
 
+https://github.com/dmitriz/stream-handbook/blob/master/example/basics/consume2.js
+
+
 ``` js
 process.stdin.on('readable', function () {
     var buf = process.stdin.read(3);
@@ -424,7 +427,7 @@ process.stdin.on('readable', function () {
 
 Now our code works as expected in 3-byte chunks!
 
-``` js
+``` sh
 $ (echo abc; sleep 1; echo def; sleep 1; echo ghi) | node consume2.js
 <Buffer 61 62 63>
 <Buffer 0a 64 65>
@@ -437,6 +440,8 @@ fire when `.read()` gives you more data than you wanted.
 
 Using `.unshift()` prevents us from making unnecessary buffer copies. Here we
 can build a readable parser to split on newlines:
+
+https://github.com/dmitriz/stream-handbook/blob/master/example/basics/lines.js
 
 ``` js
 var offset = 0;
