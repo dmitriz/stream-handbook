@@ -493,6 +493,8 @@ src.pipe(writableStream)
 Just define a `._write(chunk, enc, next)` function and then you can pipe a
 readable stream in:
 
+https://github.com/dmitriz/stream-handbook/blob/master/example/basics/write0.js
+
 ``` js
 var Writable = require('stream').Writable;
 var ws = new Writable();
@@ -538,6 +540,8 @@ process.stdout.write('beep boop\n');
 To tell the destination writable stream that you're done writing, just call
 `.end()`. You can also give `.end(data)` some `data` to write before ending:
 
+https://github.com/dmitriz/stream-handbook/blob/master/example/basics/write1.js
+
 ``` js
 var fs = require('fs');
 var ws = fs.createWriteStream('message.txt');
@@ -578,7 +582,7 @@ Transform streams are one-way, requiring a read before a write.
 ### creating a transform stream
 Transform streams require a `._transform(chunk, enc, next)` function. For example, to make a simple transform stream that capitalizes text passed to it, you would write:
 
-```js
+``` js
 var Transform = require('stream').Transform;
 
 var ts = Transform();
