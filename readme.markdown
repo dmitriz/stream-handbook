@@ -236,6 +236,8 @@ readableStream.pipe(dst)
 
 Let's make a readable stream!
 
+https://github.com/dmitriz/stream-handbook/blob/master/example/basics/read0.js
+
 ``` js
 var Readable = require('stream').Readable;
 
@@ -268,6 +270,8 @@ it.
 
 We can push chunks on-demand by defining a `._read` function:
 
+https://github.com/dmitriz/stream-handbook/blob/master/example/basics/read1.js
+
 ``` js
 var Readable = require('stream').Readable;
 var rs = Readable();
@@ -299,13 +303,17 @@ that approach doesn't lend itself very well to comprehensible examples.
 To show that our `_read` function is only being called when the consumer
 requests, we can modify our readable stream code slightly to add a delay:
 
+https://github.com/dmitriz/stream-handbook/blob/master/example/basics/read2.js
+
 ``` js
 var Readable = require('stream').Readable;
 var rs = Readable();
 
+var count = 0;
 var c = 97 - 1;
 
 rs._read = function () {
+    count++;
     if (c >= 'z'.charCodeAt(0)) return rs.push(null);
 
     setTimeout(function () {
@@ -316,7 +324,7 @@ rs._read = function () {
 rs.pipe(process.stdout);
 
 process.on('exit', function () {
-    console.error('\n_read() called ' + (c - 97) + ' times');
+    console.error('\n_read() called ' + count + ' times');
 });
 process.stdout.on('error', process.exit);
 ```
@@ -354,6 +362,8 @@ kind of stream or a stream created with a module like
 or [concat-stream](https://npmjs.org/package/concat-stream),
 but occasionally it might be useful to consume a readable stream directly.
 
+https://github.com/dmitriz/stream-handbook/blob/master/example/basics/consume0.js
+
 ``` js
 process.stdin.on('readable', function () {
     var buf = process.stdin.read();
@@ -361,7 +371,7 @@ process.stdin.on('readable', function () {
 });
 ```
 
-```
+``` sh
 $ (echo abc; sleep 1; echo def; sleep 1; echo ghi) | node consume0.js
 <Buffer 61 62 63 0a>
 <Buffer 64 65 66 0a>
@@ -390,7 +400,10 @@ process.stdin.on('readable', function () {
 
 Running this example gives us incomplete data!
 
-``` js
+https://github.com/dmitriz/stream-handbook/blob/master/example/basics/consume1.js
+
+
+``` sh
 $ (echo abc; sleep 1; echo def; sleep 1; echo ghi) | node consume1.js
 <Buffer 61 62 63>
 <Buffer 0a 64 65>
