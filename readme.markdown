@@ -71,7 +71,7 @@ systems out of small components that
 [do one thing well](http://www.faqs.org/docs/artu/ch01s06.html).
 In unix, streams are implemented by the shell with `|` pipes.
 In node, the built-in
-[stream module](http://nodejs.org/docs/latest/api/stream.html)
+[stream module](https://nodejs.org/docs/latest/api/stream.html)
 is used by the core libraries and can also be used by user-space modules.
 Similar to unix, the node stream module's primary composition operator is called
 `.pipe()` and you get a backpressure mechanism for free to throttle writes for
@@ -678,7 +678,7 @@ expectations.
 
 ## Read More
 
-* [core stream documentation](http://nodejs.org/docs/latest/api/stream.html#stream_stream)
+* [core stream documentation](https://nodejs.org/docs/latest/api/stream.html#stream_stream)
 * You can use the [readable-stream](https://npmjs.org/package/readable-stream)
 module to make your streams3 code compliant with node 0.8 and below. Just
 `require('readable-stream')` instead of `require('stream')` after you
@@ -692,27 +692,27 @@ These streams are built into node itself.
 
 ## Process
 
-### [process.stdin](http://nodejs.org/docs/latest/api/process.html#process_process_stdin)
+### [process.stdin](https://nodejs.org/docs/latest/api/process.html#process_process_stdin)
 
 This readable stream contains the standard system input stream for your program.
 
 It is paused by default but the first time you refer to it `.resume()` will be
 called implicitly on the
-[next tick](http://nodejs.org/docs/latest/api/process.html#process_process_nexttick_callback).
+[next tick](https://nodejs.org/docs/latest/api/process.html#process_process_nexttick_callback_arg).
 
 If process.stdin is a tty (check with
-[`tty.isatty()`](http://nodejs.org/docs/latest/api/tty.html#tty_tty_isatty_fd))
+[`tty.isatty()`](https://nodejs.org/docs/latest/api/tty.html#tty_tty_isatty_fd))
 then input events will be line-buffered. You can turn off line-buffering by
 calling `process.stdin.setRawMode(true)` BUT the default handlers for key
 combinations such as `^C` and `^D` will be removed.
 
-### [process.stdout](http://nodejs.org/api/process.html#process_process_stdout)
+### [process.stdout](https://nodejs.org/api/process.html#process_process_stdout)
 
 This writable stream contains the standard system output stream for your program.
 
 `write` to it if you want to send data to stdout
 
-### [process.stderr](http://nodejs.org/api/process.html#process_process_stderr)
+### [process.stderr](https://nodejs.org/api/process.html#process_process_stderr)
 
 This writable stream contains the standard system error stream for your program.
 
@@ -728,7 +728,7 @@ This writable stream contains the standard system error stream for your program.
 
 ## net
 
-### [net.connect()](http://nodejs.org/docs/latest/api/net.html#net_net_connect_options_connectionlistener)
+### [net.connect()](https://nodejs.org/docs/latest/api/net.html#net_net_connect_options_connectlistener)
 
 This function returns a [duplex stream] that connects over tcp to a remote
 host.
