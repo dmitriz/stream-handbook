@@ -582,6 +582,8 @@ Transform streams are one-way, requiring a read before a write.
 ### creating a transform stream
 Transform streams require a `._transform(chunk, enc, next)` function. For example, to make a simple transform stream that capitalizes text passed to it, you would write:
 
+https://github.com/dmitriz/stream-handbook/blob/master/example/basics/transform0.js
+
 ``` js
 var Transform = require('stream').Transform;
 
@@ -751,10 +753,11 @@ expectations.
 
 ## Read More
 
-* [core stream documentation](http://nodejs.org/docs/latest/api/stream.html#stream_stream)
-* [notes on the stream api](http://maxogden.com/node-streams)
-* [why streams are awesome](http://blog.dump.ly/post/19819897856/why-node-js-streams-are-awesome)
-* [notes on event-stream](http://thlorenz.com/blog/event-stream)
+* [Core stream documentation](http://nodejs.org/docs/latest/api/stream.html#stream_stream)
+* [Node Streams: How do they work?](http://maxogden.com/node-streams)
+* [Why streams are awesome](https://web.archive.org/web/20130125124400/http://blog.dump.ly/post/19819897856/why-node-js-streams-are-awesome)
+* [Hacker News: Why Node.js streams are awesome](https://news.ycombinator.com/item?id=3752340)
+* [The Power of NodeJS Streams and the event-stream Module](http://thlorenz.com/blog/the-power-of-nodejs-streams-and-the-event-stream-module/)
 
 ***
 
