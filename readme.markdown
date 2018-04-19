@@ -960,6 +960,8 @@ $ curl -X POST -d 'beep=boop&dinosaur=trex' http://localhost:5005
 
 ## [ternary-stream](https://github.com/robrich/ternary-stream)
 
+## [ordered-through](https://github.com/juliangruber/ordered-through)
+
 ***
 
 # meta streams
