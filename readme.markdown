@@ -10,7 +10,7 @@ You also could read a **[chinese edition](https://github.com/jabez128/stream-han
 
 You can install this handbook with npm. Just do:
 
-```
+``` js
 npm install -g stream-handbook
 ```
 
@@ -184,7 +184,7 @@ All the different types of streams use `.pipe()` to pair inputs with outputs.
 `.pipe()` is just a function that takes a readable source stream `src` and hooks
 the output to a destination writable stream `dst`:
 
-```
+``` js
 src.pipe(dst)
 ```
 
@@ -205,7 +205,7 @@ c.pipe(d);
 This is very much like what you might do on the command-line to pipe programs
 together:
 
-```
+``` js
 a | b | c | d
 ```
 
@@ -237,7 +237,7 @@ rs.push(null);
 rs.pipe(process.stdout);
 ```
 
-```
+``` js
 $ node read0.js
 beep boop
 ```
@@ -269,7 +269,7 @@ rs._read = function () {
 rs.pipe(process.stdout);
 ```
 
-```
+``` js
 $ node read1.js
 abcdefghijklmnopqrstuvwxyz
 ```
@@ -287,7 +287,7 @@ that approach doesn't lend itself very well to comprehensible examples.
 To show that our `_read` function is only being called when the consumer
 requests, we can modify our readable stream code slightly to add a delay:
 
-```js
+``` js
 var Readable = require('stream').Readable;
 var rs = Readable();
 
@@ -312,7 +312,7 @@ process.stdout.on('error', process.exit);
 Running this program we can see that `_read()` is only called 5 times when we
 only request 5 bytes of output:
 
-```
+``` js
 $ node read2.js | head -c5
 abcde
 _read() called 5 times
@@ -378,7 +378,7 @@ process.stdin.on('readable', function () {
 
 Running this example gives us incomplete data!
 
-```
+``` js
 $ (echo abc; sleep 1; echo def; sleep 1; echo ghi) | node consume1.js 
 <Buffer 61 62 63>
 <Buffer 0a 64 65>
@@ -474,7 +474,7 @@ ws._write = function (chunk, enc, next) {
 process.stdin.pipe(ws);
 ```
 
-```
+``` sh
 $ (echo beep; sleep 1; echo boop) | node write0.js 
 <Buffer 62 65 65 70 0a>
 <Buffer 62 6f 6f 70 0a>
@@ -519,7 +519,7 @@ setTimeout(function () {
 }, 1000);
 ```
 
-```
+``` sh
 $ node writing1.js 
 $ cat message.txt
 beep boop
@@ -610,7 +610,7 @@ process.stdin.on('end', function () {
 });
 ```
 
-```
+``` sh
 $ (echo beep; sleep 1; echo boop) | node classic1.js 
 <Buffer 62 65 65 70 0a>
 <Buffer 62 6f 6f 70 0a>
@@ -639,7 +639,7 @@ function end () {
 }
 ```
 
-```
+``` sh
 $ (echo beep; sleep 1; echo boop) | node through.js 
 <Buffer 62 65 65 70 0a>
 <Buffer 62 6f 6f 70 0a>
@@ -656,7 +656,7 @@ process.stdin.pipe(concat(function (body) {
 }));
 ```
 
-```
+``` sh
 $ echo '{"beep":"boop"}' | node concat.js 
 { beep: 'boop' }
 ```
@@ -785,7 +785,7 @@ cs.write('boop.');
 cs.end();
 ```
 
-```
+``` sh
 $ node concat.js
 BEEP BOOP.
 ```
@@ -807,7 +807,7 @@ var server = http.createServer(function (req, res) {
 server.listen(5005);
 ```
 
-```
+``` sh
 $ curl -X POST -d 'beep=boop&dinosaur=trex' http://localhost:5005
 {"beep":"boop","dinosaur":"trex"}
 ```
@@ -916,7 +916,7 @@ a <-> b <-> c
 Note that nodes `a` and `e` aren't directly connected, but when we run this
 script:
 
-```
+``` sh
 $ node model.js
 x => 555 from 1347857300518
 ```
@@ -986,7 +986,7 @@ zeroed.
 
 Once we get the server and some clients running we should see a sequence like this:
 
-```
+``` js
 count = 183
 count = 184
 count = 185
@@ -998,7 +998,7 @@ count = 189
 
 Occasionally on some of the nodes we might see a sequence with repeated values like:
 
-```
+``` js
 count = 147
 count = 148
 count = 149
@@ -1192,7 +1192,7 @@ c.pipe(d).pipe(c);
 
 After we spin up the server, when we run the client now we get:
 
-```
+``` sh
 $ node client.js
 beep:10 => BOOOOOOOOOOP
 ```
@@ -1477,7 +1477,7 @@ stream.pipe(render()).pipe(through(function (html) {
 Just compile with [browserify](http://browserify.org) and
 [brfs](http://github.com/substack/brfs):
 
-```
+``` js
 $ browserify -t brfs browser.js > static/bundle.js
 ```
 
@@ -1490,14 +1490,14 @@ $ echo '{"who":"zoltar","message":"COWER PUNY HUMANS"}' >> data.txt
 
 then spin up the server:
 
-```
+``` sh
 $ node server.js
 ```
 
 then navigate to `localhost:8000` where we will see our content. If we add some
 more content:
 
-```
+``` sh
 $ echo '{"who":"substack","message":"oh hello."}' >> data.txt
 $ echo '{"who":"zoltar","message":"HEAR ME!"}' >> data.txt
 ```
