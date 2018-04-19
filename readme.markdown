@@ -18,7 +18,7 @@ Now you will have a `stream-handbook` command that will open this readme file in
 your `$PAGER`. Otherwise, you may continue reading this document as you are
 presently doing.
 
-# table of contents
+# Table of contents
 
 - [introduction](#Introduction)
 - [why you should use streams](#why-you-should-use-streams)
