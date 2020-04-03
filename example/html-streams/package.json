@@ -5,7 +5,7 @@
     "hyperglue": "~1.0.0",
     "slice-file": "~0.1.5",
     "through": "~2.3.4",
-    "ecstatic": "~0.4.2",
+    "ecstatic": "~4.1.4",
     "shoe": "~0.0.10",
     "browserify": "~2.14.2",
     "brfs": "~0.0.5",
