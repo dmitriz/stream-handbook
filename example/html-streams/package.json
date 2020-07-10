@@ -8,7 +8,7 @@
     "ecstatic": "~4.1.4",
     "shoe": "~0.0.10",
     "browserify": "~2.14.2",
-    "brfs": "~0.0.5",
+    "brfs": "~0.2.2",
     "hyperstream": "~0.1.4"
   }
 }
