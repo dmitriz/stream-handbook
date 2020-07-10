@@ -3,6 +3,6 @@
   "private" : true,
   "version" : "0.0.0",
   "dependencies" : {
-    "scuttlebutt" : "~3.2.3"
+    "scuttlebutt" : "~3.3.2"
   }
 }
